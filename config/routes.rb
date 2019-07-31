@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # root to: redirect("/users/sign_up") 
   root to: 'static_pages#home'
   resources :posts
+  resources :users, only: :show
 end
