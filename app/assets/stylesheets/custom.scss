@@ -72,7 +72,7 @@ p {
 
 /* header */
 
-#logo {
+#logo, #username {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
@@ -80,6 +80,20 @@ p {
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+#username{
+  float: left;
+  margin-right: 10px;
+  font-size: 1.1em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 14px;
   font-weight: bold;
   &:hover {
     color: white;
