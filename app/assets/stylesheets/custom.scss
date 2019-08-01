@@ -177,13 +177,16 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+  width: 30%;
   margin-bottom: 15px;
   @include box_sizing;
 }
 
 input {
   height: auto !important;
+}
+input[type='checkbox']{
+  width: 2%;
 }
 
 #error_explanation {

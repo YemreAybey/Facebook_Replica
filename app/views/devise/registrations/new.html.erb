@@ -22,16 +22,16 @@
   <ul>
   <%= f.fields_for :address do |address_form| %>
     <%= address_form.label :country %><br />
-    <%= address_form.text_field :country, autofocus: true %>
+    <%= address_form.text_field :country, autofocus: true %><br>
 
     <%= address_form.label :city %><br />
-    <%= address_form.text_field :city, autofocus: true %>
+    <%= address_form.text_field :city, autofocus: true %><br>
 
     <%= address_form.label :street %><br />
-    <%= address_form.text_field :street, autofocus: true %>
+    <%= address_form.text_field :street, autofocus: true %><br>
 
     <%= address_form.label :zipcode %><br />
-    <%= address_form.text_field :zipcode, autofocus: true %>
+    <%= address_form.text_field :zipcode, autofocus: true %><br>
 
     <% end %>
 </div>
