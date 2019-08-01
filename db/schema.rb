@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_07_31_113407) do
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
