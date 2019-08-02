@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(posts_params)
         if @post.save
-            redirect_to root_path
+            redirect_to authenticated_root_path
         else
             render 'posts/new'
         end

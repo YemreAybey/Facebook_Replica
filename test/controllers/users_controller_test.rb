@@ -11,10 +11,23 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_path
   end
 
-  test "should redirect edit when not logged in" do
+  test "should redirect to login when not logged in" do
     get user_path(@user)
     assert_not flash.empty?
     assert_redirected_to new_user_session_path
   end 
+
+  test "redirects when logged in as other user" do
+    get user_session_path
+    assert_equal 200, status
+    post user_session_path, params: {user: {
+      email:    @other_user.email,
+      password: "password"
+    }}
+    follow_redirect!
+    assert_equal 200, status
+    get user_path(@user)
+    assert_redirected_to home_path
+  end
 
 end
