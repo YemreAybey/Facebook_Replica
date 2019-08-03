@@ -13,6 +13,16 @@ class PostsController < ApplicationController
         end
     end
 
+    def show
+        @post = Post.find(params[:id])
+        @comment = current_user.comments.build
+        @comment.post_id = @post.id
+    end
+
+    def index
+
+    end
+  
     private
 
     def posts_params

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/edit'
   devise_for :users
   get "/home", to: "static_pages#home"
   get "/sign_up", to: 'devise/registrations#new'
@@ -16,4 +18,5 @@ Rails.application.routes.draw do
   
   resources :posts
   resources :users, only: :show
+  resources :comments,  only: [:create, :destroy]
 end

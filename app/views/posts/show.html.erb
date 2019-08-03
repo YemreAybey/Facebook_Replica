@@ -1,0 +1,24 @@
+
+<p> <%= @post.body %> </p>
+<br>
+<%= link_to "edit", edit_post_path(@post) %>
+<h3>Comments (<%= @post.comments.size %>)</h3>
+<h3>Comments</h3>
+
+<div>
+    <% if @post.comments.any? %>
+    <p>Commented <%= distance_of_time_in_words(@comment.post.created_at, @comment.created_at) %> later</p>
+    <h4>Comment by <%= @comment.user.first_name %></h4>
+    <p class="comment"><%= @comment.body %></p>
+    <% end %>
+</div>
+<h3>Post a Comment</h3>
+<%= form_for @comment  do |f| %>
+   <p>
+     <%= f.label :body, "Your Comment" %><br/>
+     <%= f.text_area :body %>
+   </p>
+   <p>
+     <%= f.submit 'Submit' %>
+   </p>
+ <% end %>
