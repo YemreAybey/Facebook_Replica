@@ -8,7 +8,7 @@ end
     user = User.new(
     first_name: "asd",
     last_name: "",
-    email: "hafizbadrie@hotmail.com",
+    email: "hafsdfbadrie@hotmail.com",
     bio: "developer",
     address: {
       city: "Nai",
@@ -22,9 +22,22 @@ end
   assert_no_difference 'User.count' do
      user.save
   end
-  user.last_name = 'asdasd'
-  assert_difference 'User.count', 1 do
-    user.save
- end
+  
 end
+  test "creates user perfectly" do
+    get new_user_registration_path
+    assert_difference 'User.count', 1 do
+    post signup_path, params: { user: { first_name: "asd",last_name: "asdfa",
+                                        email: "hvbhf@hotmail.com",
+                                        bio: "developer",
+                                        address: {
+                                          city: "Nai",
+                                          country: "South America",
+                                          zipcode: "+254",
+                                          street: "5th" 
+                                        },
+                                      password: 'password',
+                                      password_confirmation: 'password' } }
+    end
+  end
 end

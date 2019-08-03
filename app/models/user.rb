@@ -3,6 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
+  validates :bio, presence: true
+  store_accessor :address, :country, :city, :street, :zipcode
+  validates :country, presence: true
+  validates :city, presence: true
+  validates :street, presence: true
+  validates :zipcode, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts
