@@ -19,8 +19,26 @@ class PostsController < ApplicationController
     end
 
     def index
+      @posts = Post.all #This is for now
+      @comment = Comment.new
+    end
 
+    def edit
+        @post = Post.find(params[:id])
+    end
 
+    def update
+        @post = Post.find(params[:id])
+        @post.update(posts_params)
+        flash[:success] = "Post Updated!"
+        redirect_to posts_path
+    end
+
+    def destroy
+        @post = Post.find(params[:id])
+        @post.destroy
+        flash[:success] = "Post Destroyed!"
+        redirect_to posts_path
     end
   
     private

@@ -275,3 +275,13 @@ span.picture {
     border: 0;
   }
 }
+/* Timeline */
+.each_post {
+  width: 100%;
+  height: 100%;
+  .post-body {
+    border: 1px solid gray;
+    background-color: lightgray;
+    min-height: 100px;
+  }
+}

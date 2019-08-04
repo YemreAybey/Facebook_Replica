@@ -14,7 +14,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_equal 200, status
     assert_difference 'Post.count', 1 do
-      post posts_path, params: { post: { body: "Lorem ipsum" } }
+    post posts_path, params: { post: { body: "Lorem ipsum" } }
     end
     assert_redirected_to authenticated_root_path
   end

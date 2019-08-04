@@ -1,0 +1,52 @@
+<div class="row">
+  <aside class="col-md-4 col-xs-12">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for current_user %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-xs-12 col-md-6">
+    <% @posts.each do |post| %>
+        <div class="each_post">
+          <h3> Posted By <%= post.user.first_name %> </h3>
+          <div> <span class="post-body"> <%= post.body %> </span>
+          <% if current_user == post.user %>
+          <%= link_to 'Edit', edit_post_path(post), class:"text-primary" %></td>
+          <%= link_to 'Delete', post_path(post), class:"text-primary",
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+          </div>
+    <div>
+    <% if post.comments.any? %>
+    <% post.comments.each do |comment| %>
+    <h4>Comment by <%= comment.user.first_name %>
+    <span><small>Commented <%= distance_of_time_in_words(Time.now, comment.created_at) %> ago</small></span>
+    </h4>
+    <p class="comment"><%= comment.body %>
+      <% if current_user == comment.user %>
+      ---><%= link_to 'Edit', edit_comment_path(comment), class:"text-primary" %></td>
+    <%= link_to 'Delete', comment_path(comment), class:"text-primary",
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
+    <% end %></p>
+    <% end %>
+    <% end %>
+</div>
+<h4>Post a Comment</h4>
+<%= form_for @comment  do |f| %>
+   <p>
+     <%= f.label :body, "Your Comment" %><br/>
+     <%= f.text_area :body %>
+     <%= f.hidden_field :post_id, value: post.id %>
+   </p>
+   <p>
+     <%= f.submit 'Submit' %>
+   </p>
+ <% end %>
+        </div>
+    <% end %>
+  </div>
+</div>
+

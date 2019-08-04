@@ -3,12 +3,15 @@ Rails.application.routes.draw do
   get 'comments/edit'
   devise_for :users
   get "/home", to: "static_pages#home"
-  get "/sign_up", to: 'devise/registrations#new'
+  #get "/sign_up", to: 'devise/registrations#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # root to: redirect("/users/sign_up")
   devise_scope :user do
+    post "signup" => "devise/registrations#create"
+  end
+  devise_scope :user do
     authenticated :user do
-      root 'static_pages#home', as: :authenticated_root
+      root 'posts#index', as: :authenticated_root
     end
 
     unauthenticated do
@@ -18,5 +21,5 @@ Rails.application.routes.draw do
   
   resources :posts
   resources :users, only: :show
-  resources :comments,  only: [:create, :destroy]
+  resources :comments
 end
