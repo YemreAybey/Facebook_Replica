@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'comments/create'
   get 'comments/edit'
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "/home", to: "static_pages#home"
   #get "/sign_up", to: 'devise/registrations#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
