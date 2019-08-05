@@ -10,7 +10,7 @@
     <% @posts.each do |post| %>
         <div class="each_post">
           <h3> Posted By <%= post.user.first_name %> </h3>
-          <div> <span class="post-body"> <%= post.body %> </span>
+          <div> <div class="post-body w-100"> <%= post.body %> </span>
           <% if current_user == post.user %>
           <%= link_to 'Edit', edit_post_path(post), class:"text-primary" %></td>
           <%= link_to 'Delete', post_path(post), class:"text-primary",
