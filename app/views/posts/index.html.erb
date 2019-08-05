@@ -11,6 +11,8 @@
         <div class="each_post">
           <h3> Posted By <%= post.user.first_name %> </h3>
           <div> <div class="post-body w-100"> <%= post.body %> </span>
+           
+
           <% if current_user == post.user %>
           <%= link_to 'Edit', edit_post_path(post), class:"text-primary" %></td>
           <%= link_to 'Delete', post_path(post), class:"text-primary",
@@ -19,6 +21,30 @@
           <% end %>
           </div>
     <div>
+    <h4>Like the Post</h4>
+    <% if like = post.likes.find_by(user: current_user) %>
+      
+    <%= button_to 'Unlike', like_path(like.id), method: :delete, class:"d-inline w-20"  %>
+      <small class="d-inline">
+      <%= post.likes.size %>
+      
+      </small>
+
+    <% else %> 
+
+    <%= form_for @like  do |f| %>
+      <p>
+        <%= f.hidden_field :post_id, value: post.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+      </p>
+      <%= f.submit 'Like' %>
+      <span><small class="d-inline">
+        <%= post.likes.size %>
+
+      </small>
+      </span>
+    <% end %>
+    <% end %>
     <% if post.comments.any? %>
     <% post.comments.each do |comment| %>
     <h4>Comment by <%= comment.user.first_name %>

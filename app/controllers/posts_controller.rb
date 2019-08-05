@@ -21,6 +21,7 @@ class PostsController < ApplicationController
     def index
       @posts = Post.all #This is for now
       @comment = Comment.new
+      @like = Like.new
     end
 
     def edit
