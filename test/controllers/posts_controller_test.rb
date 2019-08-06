@@ -13,11 +13,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     }}
     follow_redirect!
     assert_equal 200, status
-    get new_post_path
     assert_difference 'Post.count', 1 do
     post posts_path, params: { post: { body: "Lorem ipsum" } }
     end
-    assert_redirected_to authenticated_root_path
+    assert_redirected_to posts_path
   end
 
   test "redirects when trying to create a post if not logged in" do
