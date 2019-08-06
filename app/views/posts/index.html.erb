@@ -5,6 +5,16 @@
         <%= gravatar_for current_user %>
       </h1>
     </section>
+    <div class="row">
+  <div class="col-sm-11">
+    <%= form_for(@post) do |f| %>
+      <%= f.label :Post %>
+      <%= f.text_field :body, class: 'form-control' %>
+
+      <%= f.submit "Create Post", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
   </aside>
   <div class="col-xs-12 col-md-6">
     <% @posts.each do |post| %>

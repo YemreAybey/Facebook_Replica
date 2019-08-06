@@ -1,8 +1,6 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!
-    def new
-        @post = Post.new
-    end
+    before_action :authorize_user!, only: [:edit, :update, :destroy]
 
     def create
         @post = current_user.posts.build(posts_params)
@@ -22,6 +20,7 @@ class PostsController < ApplicationController
       @posts = Post.all #This is for now
       @comment = Comment.new
       @like = Like.new
+      @post = Post.new
     end
 
     def edit
@@ -41,10 +40,19 @@ class PostsController < ApplicationController
         flash[:success] = "Post Destroyed!"
         redirect_to posts_path
     end
+
   
     private
 
     def posts_params
         params.require(:post).permit(:body)
+    end
+
+    def authorize_user!
+        @post = current_user.posts.find_by(id: params[:id])
+        if @post.nil?
+          flash[:danger]= "You Are Not Authorized For This"
+          redirect_to posts_path
+        end 
     end
 end

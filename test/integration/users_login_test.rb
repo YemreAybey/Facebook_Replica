@@ -4,7 +4,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:Emre)
   end
-  test "redicts when logged in as other user" do
+  test "performs succesfull login" do
     get user_session_path
     assert_equal 200, status
     post user_session_path, params: {user: {
@@ -12,7 +12,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       password: "password"
     }}
     follow_redirect!
-    assert_equal 200, status
     assert_select 'div.alert', 'Signed in successfully.'
   end
 end

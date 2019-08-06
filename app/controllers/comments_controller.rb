@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authorize_user, only: [:edit, :update, :destroy]
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
@@ -31,6 +32,14 @@ end
 
   def comment_params
     params.require(:comment).permit(:body, :post_id)
+  end
+
+  def authorize_user!
+    @comment = current_user.comments.find_by(id: params[:id])
+    if @comment.nil?
+      flash[:danger]= "You Are Not Authorized For This" 
+      redirect_to posts_path 
+    end
   end
   
 end
