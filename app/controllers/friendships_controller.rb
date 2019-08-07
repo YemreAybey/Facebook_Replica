@@ -13,9 +13,16 @@ class FriendshipsController < ApplicationController
 
     def destroy
       @friendship = Friendship.find(params[:id])
-        @friendship.destroy
-        flash[:success] = "Friendship Rejected!"
-        redirect_to users_path
+        if f = Friendship.where(user_id:@friendship.friend_id).find_by(friend_id:@friendship.user_id)
+          @friendship.destroy
+          f.destroy
+          flash[:success] = "Friendship Deleted"
+          redirect_to friendships_path
+        else
+          @friendship.destroy
+          flash[:success] = "Friendship Rejected"
+          redirect_to friendships_path
+        end
     end
 
     def update
@@ -23,7 +30,7 @@ class FriendshipsController < ApplicationController
         Friendship.create!(user_id: @friendship.friend_id, friend_id: @friendship.user_id, status:true)
         @friendship.update_attribute(:status,  true)
         flash[:success] = "You Have Accepted the Request"
-        redirect_to users_path
+        redirect_to friendships_path
     end
     private
     def friendship_params
