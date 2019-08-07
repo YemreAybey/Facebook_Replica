@@ -1,0 +1,22 @@
+<div class="row">
+<% @users.each do |user| %>
+  <aside class="col-md-3">
+    <section class="user_info">
+    <h1>
+        <%= gravatar_for(user, 100) %>
+      </h1>
+      <% unless user == current_user %>
+        <h4> <%= user.first_name %> </h4>
+        <%= form_for @friendship  do |f| %>
+      <p>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :friend_id, value: user.id %>
+        <%= f.hidden_field :status, value: false %>
+      </p>
+      <%= f.submit 'Add Friend' %>
+      <% end %>
+      <% end %>
+    </section>
+  </aside>
+  <% end %>
+</div>

@@ -8,6 +8,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", home_path %></li>
         <li><%= link_to "Timeline", posts_path %></li>
+        <li><%= link_to "Requests", friendships_path %></li>
         <% if user_signed_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
