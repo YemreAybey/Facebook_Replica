@@ -7,6 +7,7 @@
       </h1>
       <% unless user == current_user %>
         <h4> <%= user.first_name %> </h4>
+        <% unless current_user.friends.include? user %>
         <%= form_for @friendship  do |f| %>
       <p>
         <%= f.hidden_field :user_id, value: current_user.id %>
@@ -14,6 +15,11 @@
         <%= f.hidden_field :status, value: false %>
       </p>
       <%= f.submit 'Add Friend' %>
+      <% end %>
+      <% else %>
+      <% friendship = Friendship.where(["friend_id = ? and user_id = ? and status = ?", user.id, current_user.id, true]) %>
+
+      <%= button_to 'Unfriend', friendship_path(friendship), method: :delete %>
       <% end %>
       <% end %>
     </section>

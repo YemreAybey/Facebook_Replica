@@ -7,6 +7,7 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", home_path %></li>
+        <li><%= link_to "Users", users_path %></li>
         <li><%= link_to "Timeline", posts_path %></li>
         <li><%= link_to "Requests", friendships_path %></li>
         <% if user_signed_in? %>

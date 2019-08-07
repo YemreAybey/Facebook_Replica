@@ -8,7 +8,8 @@
         <%= gravatar_for(user, 100) %>
       </h1>
         <h4> <%= user.first_name %> </h4>
-        <%= button_to 'Accept', friendship_path(r.user_id), method: :patch %>
+        <%= button_to 'Accept', friendship_path(r.id), method: :patch %>
+        <%= button_to 'Reject', friendship_path(r.id), method: :delete %>
     </section>
   </aside>
   <% end %>
