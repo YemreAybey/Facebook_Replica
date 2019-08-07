@@ -16,9 +16,6 @@ class FriendshipsController < ApplicationController
         @friendship.destroy
         flash[:success] = "Friendship Rejected!"
         redirect_to users_path
-      @user.unfriend! @friend
-      flash[:danger] = "You have unfriended #{@friend.username}."
-      redirect_to @friend
     end
 
     def update
