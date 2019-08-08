@@ -1,4 +1,5 @@
-<h1><%=@user.id%></h1>
-<% @user.posts.each do |p| %>
-    <%= p.body %><br>
-<% end %>
+<div class="d-flex justify-content-center">
+    <div class="display-2">
+    <h3><%= @user.first_name %> has <%= @user.posts.count %> <%= link_to "Post", posts_path %></h3>
+    </div>
+</div>
