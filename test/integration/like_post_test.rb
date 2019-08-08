@@ -32,7 +32,7 @@ class LikePostTest < ActionDispatch::IntegrationTest
         follow_redirect!
         assert_equal 200, status
         get posts_path
-        assert_difference '@post.likes.count' do
+        assert_difference '@post.likes.count', 1 do
         post likes_path, params: { like: { post_id: @post.id, user_id: @user.id } }
         end
         assert_redirected_to posts_path
@@ -40,7 +40,7 @@ class LikePostTest < ActionDispatch::IntegrationTest
         like = Like.last  
         delete like_path(like.id)
         follow_redirect!
-        assert_select 'input', 'Unlike'
+        assert_select 'input[value=?]', 'Like'
     end
 
 end

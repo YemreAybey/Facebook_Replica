@@ -50,4 +50,12 @@ class User < ApplicationRecord
   def friend?(user)
     self.friends.include?(user)
   end
+
+  def timeline_posts
+   users=[self.id]
+   self.friends.each do |f|
+    users << f.id
+   end
+   Post.where(user_id: users).order('posts.updated_at DESC')
+  end
 end

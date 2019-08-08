@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     end
 
     def index
-      @posts = Post.all #This is for now
+      @posts = current_user.timeline_posts
       @comment = Comment.new
       @like = Like.new
       @post = Post.new
