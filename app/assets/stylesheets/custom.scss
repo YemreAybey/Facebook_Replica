@@ -22,9 +22,18 @@ $gray-medium-light: #eaeaea;
 
 body {
   padding-top: 60px;
+  background-color:lightgrey;
    a {
        color: #ffffff
    }
+   .post_link{
+     color: orange;
+   }
+   .post_link:hover{
+     text-decoration: none;
+     color: lightsalmon;
+   }
+   
 }
 
 section {
@@ -86,6 +95,7 @@ p {
     text-decoration: none;
   }
 }
+
 #username{
   float: left;
   margin-right: 10px;
