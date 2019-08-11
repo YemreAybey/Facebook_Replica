@@ -34,7 +34,7 @@
     <h4>Like the Post</h4>
     <% if like = post.likes.find_by(user: current_user) %>
       
-    <%= button_to 'Unlike', like_path(like.id), method: :delete, class:"d-inline w-20"  %>
+    <%= button_to 'Unlike', like_path(like.id), method: :delete, class:"d-inline", form_class: "unlike-button" %>
       <small class="d-inline">
       <%= post.likes.size %>
       

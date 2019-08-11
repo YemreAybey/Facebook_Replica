@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
-  before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :authorize_user, only: %i[edit update destroy]
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
-    flash[:success] = "Comment was successfully created."
-    redirect_to posts_path
+      flash[:success] = 'Comment was successfully created.'
+      redirect_back(fallback_location: posts_path)
     else
-    flash.now[:danger] = "Error creating comment"
+      flash.now[:danger] = 'Error creating comment'
     end
   end
 
@@ -17,18 +19,18 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
-    flash[:success] = "Comment Updated!"
+    flash[:success] = 'Comment Updated!'
     redirect_to posts_path
   end
 
-def destroy
+  def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    flash[:success] = "Comment Destroyed!"
-    redirect_to posts_path
-end
+    flash[:success] = 'Comment Destroyed!'
+    redirect_back(fallback_location: posts_path)
+  end
 
-  private 
+  private
 
   def comment_params
     params.require(:comment).permit(:body, :post_id)
@@ -37,9 +39,8 @@ end
   def authorize_user!
     @comment = current_user.comments.find_by(id: params[:id])
     if @comment.nil?
-      flash[:danger]= "You Are Not Authorized For This" 
-      redirect_to posts_path 
+      flash[:danger] = 'You Are Not Authorized For This'
+      redirect_back(fallback_location: posts_path)
     end
   end
-  
 end
