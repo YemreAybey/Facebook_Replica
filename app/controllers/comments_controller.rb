@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body, :post_id)
   end
 
-  def authorize_user!
+  def authorize_user
     @comment = current_user.comments.find_by(id: params[:id])
     if @comment.nil?
       flash[:danger] = 'You Are Not Authorized For This'

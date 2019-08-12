@@ -6,6 +6,7 @@ class LikePostTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:Emre)
     @post = posts(:one)
+    @like = likes(:one)
   end
 
   test 'user can like a post when logged in' do
