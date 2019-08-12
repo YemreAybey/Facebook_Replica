@@ -1,0 +1,11 @@
+<h4>Update Your Comment</h4>
+<%= form_for @comment  do |f| %>
+   <p>
+     <%= f.label :body, "Your Comment" %><br/>
+     <%= f.text_area :body %>
+     <%= f.hidden_field :post_id, value: @comment.post_id %>
+   </p>
+   <p>
+     <%= f.submit 'Submit' %>
+   </p>
+ <% end %>
