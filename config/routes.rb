@@ -22,7 +22,8 @@ Rails.application.routes.draw do
   end
 
   resources :posts
-  resources :users, only: :show
+  resources :users, only: %i[show index]
   resources :comments
   resources :likes, only: %i[create destroy]
+  resources :friendships, only: %i[create update destroy index]
 end

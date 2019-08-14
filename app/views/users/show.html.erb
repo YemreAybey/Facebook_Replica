@@ -7,6 +7,18 @@
      <%= link_to('Edit Profile', edit_user_registration_path, class:"text-primary clearfix d-block") %>
     </section>
   </aside>
+  <div class = "col-md-8 row friend-area">
+  <h1> FRIENDS </h1>
+  <% @user.friends.each do |f| %>
+  <aside class="col-md-4 ">
+  <h1>
+  <%= gravatar_for(f, 100) %>
+  </h1>
+  <h4><%= f.first_name %></h4>
+  </aside>
+<% end %>
+</div>
+
 </div>
 <% @user.posts.each do |p| %>
     <%= p.body %><br>

@@ -1,0 +1,16 @@
+
+    <div class="row">
+<% @requests.each do |r| %>
+  <aside class="col-md-3">
+    <section class="user_info">
+    <h1>
+        <% user = User.find(r.user_id) %>
+        <%= gravatar_for(user, 100) %>
+      </h1>
+        <h4> <%= user.first_name %> </h4>
+        <%= button_to 'Accept', friendship_path(r.id), method: :patch %>
+        <%= button_to 'Reject', friendship_path(r.id), method: :delete %>
+    </section>
+  </aside>
+  <% end %>
+</div>

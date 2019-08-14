@@ -10,7 +10,7 @@ class PostsController < ApplicationController
       redirect_to posts_path
     else
       flash[:danger] = 'Post cannot be blank'
-      redirect_to posts_path
+      redirect_back(fallback_location: posts_path)
     end
   end
 
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all # This is for now
+    @posts = current_user.timeline_posts
     @comment = Comment.new
     @like = Like.new
     @post = Post.new
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:success] = 'Post Destroyed!'
-    redirect_to posts_path
+    redirect_back(fallback_location: posts_path)
   end
 
   private

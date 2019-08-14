@@ -2,8 +2,10 @@
 
 one:
   user: Emre
-  post: one
+  friend: Grace
+  status: false
 
 two:
-  user: Grace
-  post: two
+  user: two
+  friend: two
+  status: false

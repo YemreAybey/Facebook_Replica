@@ -5,13 +5,13 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(like_params)
     @like.save
-    redirect_to posts_path
+    redirect_back(fallback_location: posts_path)
   end
 
   def destroy
     @like = Like.find(params[:id])
     @like.destroy
-    redirect_to posts_path
+    redirect_back(fallback_location: posts_path)
   end
 
   private

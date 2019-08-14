@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :friendships
+  has_many :friends, through: :friendships
 
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -40,5 +42,21 @@ class User < ApplicationRecord
       user.bio = 'Some Bio'
       user.address = { country: 'Some', city: 'city', street: 'street', zipcode: '123' }
     end
+  end
+
+  def pending_friends
+    Friendship.where(['friend_id = ? and status = ?', id, false])
+  end
+
+  def friend?(user)
+    friends.include?(user)
+  end
+
+  def timeline_posts
+    users = [id]
+    friends.each do |f|
+      users << f.id
+    end
+    Post.where(user_id: users).order('posts.updated_at DESC')
   end
 end

@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = 'Comment was successfully created.'
-      redirect_to posts_path
+      redirect_back(fallback_location: posts_path)
     else
       flash.now[:danger] = 'Error creating comment'
     end
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:success] = 'Comment Destroyed!'
-    redirect_to posts_path
+    redirect_back(fallback_location: posts_path)
   end
 
   private
@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find_by(id: params[:id])
     if @comment.nil?
       flash[:danger] = 'You Are Not Authorized For This'
-      redirect_to posts_path
+      redirect_back(fallback_location: posts_path)
     end
   end
 end
