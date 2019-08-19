@@ -27,7 +27,7 @@ possible to like and unlike the posts. Lastly, you can be friends with other use
 
  http://localhost:3000/
 
-Or you can directly go to --> [Heroku Link](https://sheltered-taiga-98173.herokuapp.com) and try the app.
+Or you can directly go to --> [Heroku Link](https://rails-facebook.herokuapp.com/) and try the app.
 
 
 
