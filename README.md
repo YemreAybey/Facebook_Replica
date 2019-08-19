@@ -1,7 +1,17 @@
 # Ruby on Rails Facebook application
 
-This is the Final Poject in The Odin Project’s Ruby on Rails Curriculum. For more information click --> [Facebook-Odin]
-(https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project)
+# Used Stacks
+
+- Ruby on Rails 5.3.2
+- Html
+- CSS
+- SCSS
+- Bootstrap
+
+# Special Gems
+
+- Devise gemis used for User Model. [Devise Github](https://github.com/plataformatec/devise)
+- For Signing in with facebook we used Omniauth gem. [OmniAuth Github](https://github.com/omniauth/omniauth-github)
 
 ## Getting started
 
