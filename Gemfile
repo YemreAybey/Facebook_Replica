@@ -18,7 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 gem 'bcrypt', '3.1.12'
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '3.4.1'
 gem 'bootstrap-will_paginate'
 gem 'carrierwave', '1.2.2'
 gem 'devise'
