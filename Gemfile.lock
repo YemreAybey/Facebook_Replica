@@ -128,7 +128,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
     mimemagic (0.3.3)
-    mini_magick (4.7.0)
+    mini_magick (4.9.4)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
@@ -261,7 +261,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails (= 4.3.1)
   listen (>= 3.0.5, < 3.2)
-  mini_magick (= 4.7.0)
+  mini_magick (= 4.9.4)
   omniauth-facebook
   pg (= 1.1.4)
   puma (~> 3.11)
