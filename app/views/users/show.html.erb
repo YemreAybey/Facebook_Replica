@@ -1,25 +1,28 @@
 <div class="row">
-  <aside class="col-md-4">
+  <section class="col-md-4">
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
       </h1>
-     <%= link_to('Edit Profile', edit_user_registration_path, class:"text-primary clearfix d-block") %>
+     <%= link_to('Edit Profile', edit_user_registration_path, class:"links profile") %>
     </section>
-  </aside>
+  </section>
   <div class = "col-md-8 row friend-area">
   <h1> FRIENDS </h1>
   <% @user.friends.each do |f| %>
-  <aside class="col-md-4 ">
-  <h1>
-  <%= gravatar_for(f, 100) %>
-  </h1>
-  <h4><%= f.first_name %></h4>
-  </aside>
+  <div class="show-area">
+    <div class="friends-area">
+        <%= gravatar_for(f, 100) %>
+        <div class="name-dist">
+        <h5><%= f.first_name %></h5>
+        <span> 
+          <small> joined <%= distance_of_time_in_words(Time.now, f.created_at) %> ago </small> 
+        </span>
+      </div>
+    </div>
+  </div>
+  
 <% end %>
 </div>
 
 </div>
-<% @user.posts.each do |p| %>
-    <%= p.body %><br>
-<% end %>
