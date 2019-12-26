@@ -1,10 +1,8 @@
-<div class="row">
+<div class="row users-row">
 <% @users.each do |user| %>
   <aside class="col-md-3">
-    <section class="user_info">
-    <h1>
-        <%= gravatar_for(user, 100) %>
-      </h1>
+    <section class="user_info users">
+        <%= gravatar_for(user) %>
       <% unless user == current_user %>
         <h4> <%= user.first_name %> </h4>
         <% unless current_user.friends.include? user %>
@@ -14,11 +12,11 @@
         <%= f.hidden_field :friend_id, value: user.id %>
         <%= f.hidden_field :status, value: false %>
       </p>
-      <%= f.submit 'Add Friend' %>
+      <%= f.submit 'Add Friend', class:"add-friend" %>
       <% end %>
       <% else %>
       <% friendship = Friendship.where(["friend_id = ? and user_id = ?", user.id, current_user.id]) %>
-      <%= button_to 'Unfriend', friendship_path(friendship.first), method: :delete %>
+      <%= button_to 'Unfriend', friendship_path(friendship.first), method: :delete, class:"unfriend-btn" %>
       <% end %>
       <% end %>
     </section>
