@@ -24,7 +24,7 @@ gem 'carrierwave', '1.2.2'
 gem 'devise'
 gem 'faker', '1.7.3'
 gem 'jquery-rails', '4.3.1'
-gem 'mini_magick', '4.7.0'
+gem 'mini_magick', '4.9.4'
 gem 'omniauth-facebook'
 gem 'will_paginate', '~> 3.1.7'
 
