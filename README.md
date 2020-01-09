@@ -66,6 +66,14 @@ $ rails server
 
 > Or you can directly go to --> [Heroku Link](https://rails-facebook.herokuapp.com/) and try the app.
 
+## Testing
+
+> To see tests. Just run
+
+```
+$ rails test
+```
+
 ## Authors
 
 👤 **Grace Mugoiri**
